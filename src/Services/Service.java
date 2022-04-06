@@ -15,7 +15,7 @@ public interface Service <T> {
     
     public void  ajouter(T t);
     public List<T> afficher();
-    public void  modifier (T t,T a);
+    public void  modifier (String t,T a);
     public void supprimer (String t);
     public void TruncateTable();
 }

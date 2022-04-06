@@ -68,10 +68,10 @@ public class ServiceUser implements Service<User> {
     }
 
     @Override
-    public void modifier(User t2,User t) {
+    public void modifier(String t2,User t) {
        
         try {
-        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2.getEmail()+"'";
+        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);

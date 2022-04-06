@@ -63,10 +63,10 @@ public class ServiceTeam implements Service<Team>{
     }
 
     @Override
-    public void modifier(Team t, Team a) {
+    public void modifier(String a,Team t) {
         
         try {
-        String querry= "UPDATE `Team` SET `TeamName`='"+t.getTeamName()+"',`Description`='"+t.getDescription()+"' WHERE TeamName='"+a.getTeamName()+"'";
+        String querry= "UPDATE `Team` SET `TeamName`='"+t.getTeamName()+"',`Description`='"+t.getDescription()+"' WHERE TeamName='"+a+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
