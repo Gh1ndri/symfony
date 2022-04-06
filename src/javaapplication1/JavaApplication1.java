@@ -28,7 +28,7 @@ public class JavaApplication1 {
         ServiceTeam serviceTeam = new ServiceTeam();
 
         while(true){
-            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher: ");
+            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher tous: ");
             String operation = sc.nextLine();
             if(operation.equals("a")){
                 System.out.print("vous allez saisir user ou team ?:");
@@ -95,52 +95,19 @@ public class JavaApplication1 {
                         serviceTeam.modifier(teamname3,t);
                 }else{
                     System.out.println("choix uncorrecte!");
-                }
+                }   
+            }else if(operation.equals("A")){
+                    System.out.print("voulez vous afficher users ou teams ?:");
+                    String type = sc.nextLine();
+                    if(type.equals("user")){
+                    System.out.println(serviceUser.afficher().toString());
+                    }else if(type.equals("team")){
+                    System.out.println(serviceTeam.afficher().toString());
+                    }
             }else{
-                System.out.println("vous avez rien choisi");
-                exit(-1);
+            System.out.println("vous avez rien choisi");
+            exit(-1);
             }
         }
-        
-//        User s1 =new User("lay@com","layth","Role_ADMIN","aaa");
-//        User s2 =new User("hamza@com","hamza","Role_ADMIN","aaa");
-//        User s3 =new User("jalel@com","jalel","Role_ADMIN","aaa");
-//        User s4 =new User("manoubia@com","manoubia","Role_ADMIN","aaa");
-//        Team t1 =new Team("team 1","sdfmqsfsdfm");
-//        Team t2 =new Team("team 2","sdfmqsfsdfmQSq");
-//        Team t3 =new Team("team 3","sdfmqsfsdfmqsds");
-//        Team t4 =new Team("team 4","sdfmqsfsdfmqsQSDQ");
-//           
-//        ServiceUser serviceUser = new ServiceUser();
-//        ServiceTeam serviceTeam = new ServiceTeam();
-//        
-//        serviceUser.ajouter(s1);
-//        serviceUser.ajouter(s2);
-//        serviceUser.ajouter(s3);
-//        serviceUser.ajouter(s4);
-//        
-//        serviceTeam.ajouter(t1);
-//        serviceTeam.ajouter(t2);
-//        serviceTeam.ajouter(t3);
-//        serviceTeam.ajouter(t4);
-//        
-        
-//        serviceTeam.TruncateTable();
-//        serviceUser.TruncateTable();
-//        System.out.println(serviceUser.afficher().toString());
-//        System.out.println(serviceTeam.afficher().toString());
-//        System.out.println(t2.toString());
-//        serviceTeam.supprimer(t2);
-//        serviceUser.supprimer(s2);
-//        System.out.println("aprés supprission");
-//        System.out.println(serviceTeam.afficher().toString());
-//        System.out.println(serviceUser.afficher().toString());
-//        serviceUser.modifier(s1, s4);
-//        System.out.println(serviceUser.afficher().toString());
-//        System.out.print(serviceUser.login("manoubia@com","aaa"));
-//        
-
-        
     }
-    
 }
