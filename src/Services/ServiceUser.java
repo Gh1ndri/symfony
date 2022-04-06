@@ -53,16 +53,16 @@ public class ServiceUser implements Service<User> {
             User p = new User();
             
             p.setId(rs.getInt(1));
-            p.setUsername(rs.getString(2));
-            p.setEmail(rs.getString(3));
+            p.setUsername(rs.getString(3));
+            p.setEmail(rs.getString(2));
             p.setRole(rs.getString(4));
             p.setPassword(rs.getString(5));
             
             users.add(p);
         }
-
         return users;
     } catch (SQLException ex) {
+        System.out.print(ex);
         }
     return users;
     }
@@ -87,10 +87,10 @@ public class ServiceUser implements Service<User> {
     }
 
     @Override
-    public void supprimer(User t) {
+    public void supprimer(String t) {
         
         try {
-        String querry= "DELETE FROM `User` WHERE email ='"+t.getEmail()+"'";
+        String querry= "DELETE FROM `User` WHERE email ='"+t+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -119,35 +119,35 @@ public class ServiceUser implements Service<User> {
 
         }
     }
-    public boolean login(String email, String password){
-        
-        List<User> users = new ArrayList();
-        try {
-        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
-        Statement stm = cnx.createStatement();
-        ResultSet rs= stm.executeQuery(querry);
-        System.out.print(rs.getString(1));
+//    public boolean login(String email, String password){
+//        
+//        List<User> users = new ArrayList();
+//        try {
+//        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
+//        Statement stm = cnx.createStatement();
+//        ResultSet rs= stm.executeQuery(querry);
+//        System.out.print(rs.getString(1));
 //        System.out.print(querry);
-        User p =new User();
-        
-        p.setId(rs.getInt(1));
-        p.setUsername(rs.getString(1));
-        p.setEmail(rs.getString(1));
-        p.setRole(rs.getString(1));
-        p.setPassword(rs.getString(1));
-        System.out.print(p);
-        users.add(p);
-        System.out.print(users);
-        if (users.size()==1){
-            return true;
-        }else{
-            return false;
-        }
-    } catch (SQLException ex) {
-        System.out.print(ex);
-        }
-       return false;
-    }
-    
+//        User p =new User();
+//        
+//        p.setId(rs.getInt(1));
+//        p.setUsername(rs.getString(1));
+//        p.setEmail(rs.getString(1));
+//        p.setRole(rs.getString(1));
+//        p.setPassword(rs.getString(1));
+//        System.out.print(p);
+//        users.add(p);
+//        System.out.print(users);
+//        if (users.size()==1){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    } catch (SQLException ex) {
+//        System.out.print(ex);
+//        }
+//       return false;
+//    }
+//    
     
 }

@@ -82,10 +82,10 @@ public class ServiceTeam implements Service<Team>{
     }
 
     @Override
-    public void supprimer(Team t) {
+    public void supprimer(String t) {
         
         try {
-        String querry= "DELETE FROM `Team` WHERE TeamName = '"+t.getTeamName()+"'";
+        String querry= "DELETE FROM `Team` WHERE TeamName ='"+t+"'";
         Statement stm = cnx.createStatement();
         stm.executeUpdate(querry);
     
