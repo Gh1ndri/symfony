@@ -45,7 +45,13 @@ public class JavaApplication1 {
                         serviceUser.ajouter(s);
                         System.out.print("saisir le password :");
                     }else if(type.equals("team")){
-                        System.out.println("vous avez saisi team");
+                        System.out.print("saisir le teamname :");
+                        String teamname = sc.nextLine();
+                        System.out.print("saisir la description :");
+                        String description = sc.nextLine();
+                        Team t =new Team(teamname,description);
+                        serviceTeam.ajouter(t);
+                        System.out.print("saisir le password :");
                     }else{
                         System.out.println("choix uncorrecte!");
                     }
