@@ -125,10 +125,10 @@ public class ServiceUser implements Service<User> {
 //        try {
 //        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
 //        Statement stm = cnx.createStatement();
+    //User u = n.....
 //        ResultSet rs= stm.executeQuery(querry);
-//        System.out.print(rs.getString(1));
-//        System.out.print(querry);
-//        User p =new User();
+//    while (rs.next()){
+//       
 //        
 //        p.setId(rs.getInt(1));
 //        p.setUsername(rs.getString(1));
@@ -136,18 +136,40 @@ public class ServiceUser implements Service<User> {
 //        p.setRole(rs.getString(1));
 //        p.setPassword(rs.getString(1));
 //        System.out.print(p);
-//        users.add(p);
-//        System.out.print(users);
-//        if (users.size()==1){
-//            return true;
-//        }else{
-//            return false;
-//        }
+//        }re
+//    
 //    } catch (SQLException ex) {
 //        System.out.print(ex);
 //        }
 //       return false;
 //    }
 //    
-    
+//    public boolean Existmail(String s){
+//        List<User> users = new ArrayList();
+//        try {
+//       
+//        String querry ="SELECT email FROM `User` where email="+s;
+//        Statement stm = cnx.createStatement();
+//        ResultSet rs= stm.executeQuery(querry);
+//            
+//        while (rs.next()){
+//            User p = new User();
+//            
+//            p.setId(rs.getInt(1));
+//            p.setUsername(rs.getString(3));
+//            p.setEmail(rs.getString(2));
+//            p.setRole(rs.getString(4));
+//            p.setPassword(rs.getString(5));
+//            
+//            users.add(p);
+//        }
+//        } catch (SQLException ex) {
+//            System.out.print(ex);
+//        }
+//        if(rs.getColumnCount()){
+//            
+//        }
+//        return false;
+//    }
+//    
 }
