@@ -28,7 +28,7 @@ public class JavaApplication1 {
         ServiceTeam serviceTeam = new ServiceTeam();
 
         while(true){
-            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher tous: ");
+            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher l/login: ");
             String operation = sc.nextLine();
             if(operation.equals("a")){
                 System.out.print("vous allez saisir user ou team ?:");
@@ -104,6 +104,12 @@ public class JavaApplication1 {
                     }else if(type.equals("team")){
                     System.out.println(serviceTeam.afficher().toString());
                     }
+            }else if(operation.equals("l")){
+                    System.out.print("saisissez votre email:");
+                    String email = sc.nextLine();
+                    System.out.print("saisissez votre password:");
+                    String password = sc.nextLine();
+                    serviceUser.login(email, password);
             }else{
             System.out.println("vous avez rien choisi");
             exit(-1);

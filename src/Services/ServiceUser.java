@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Services;
 
 import Model.User;
@@ -104,50 +100,37 @@ public class ServiceUser implements Service<User> {
         }
     }
 
-    @Override
-    public void TruncateTable() {
-        
+//    @Override
+//    public void TruncateTable() {
+//        
+//        try {
+//        String querry= "TRUNCATE TABLE `User`";
+//        Statement stm = cnx.createStatement();
+//    
+//        stm.executeUpdate(querry);
+//    
+//        } catch (SQLException ex) {
+//            System.out.println("service classe vider table methode  ");
+//            System.out.println(ex.getMessage());
+//
+//        }
+//    }
+    public void login(String email, String password){
         try {
-        String querry= "TRUNCATE TABLE `User`";
+        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
         Statement stm = cnx.createStatement();
-    
-        stm.executeUpdate(querry);
-    
-        } catch (SQLException ex) {
-            System.out.println("service classe vider table methode  ");
-            System.out.println(ex.getMessage());
-
+        ResultSet rs= stm.executeQuery(querry);
+        if(!rs.isBeforeFirst()){
+            System.out.print("user not found !!!!");
+        }
+        else{
+            System.out.print("user is logged");
+        }
+    } catch (SQLException ex) {
+        System.out.print(ex);
         }
     }
-//    public boolean login(String email, String password){
-//        
-//        List<User> users = new ArrayList();
-//        try {
-//        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
-//        Statement stm = cnx.createStatement();
-//        ResultSet rs= stm.executeQuery(querry);
-//        System.out.print(rs.getString(1));
-//        System.out.print(querry);
-//        User p =new User();
-//        
-//        p.setId(rs.getInt(1));
-//        p.setUsername(rs.getString(1));
-//        p.setEmail(rs.getString(1));
-//        p.setRole(rs.getString(1));
-//        p.setPassword(rs.getString(1));
-//        System.out.print(p);
-//        users.add(p);
-//        System.out.print(users);
-//        if (users.size()==1){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    } catch (SQLException ex) {
-//        System.out.print(ex);
-//        }
-//       return false;
-//    }
-//    
-    
 }
+
+    
+
