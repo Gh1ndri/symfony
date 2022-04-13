@@ -54,6 +54,7 @@ public class ServiceTeam implements Service<Team>{
             p.setTeamName(rs.getString(2));
             p.setDescription(rs.getString(3)); 
             teams.add(p);
+//            System.out.println(LoginSession.Role);
         }
 
         return teams;

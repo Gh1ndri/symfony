@@ -8,16 +8,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.prefs.Preferences;
 import utils.MyDB;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
  * @author leith
  */
 public class ServiceUser implements Service<User> {
-    
+   
     private Connection cnx = MyDB.getInstance().getCnx() ;
-
+    public static User user;
+    ServiceTeam serviceTeam =new ServiceTeam();
     @Override
     public void ajouter(User t) {
         
@@ -115,21 +121,40 @@ public class ServiceUser implements Service<User> {
 //
 //        }
 //    }
-    public void login(String email, String password){
+    public boolean login(String email, String password){
+        
         try {
         String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
         Statement stm = cnx.createStatement();
         ResultSet rs= stm.executeQuery(querry);
+
         if(!rs.isBeforeFirst()){
-            System.out.print("user not found !!!!");
+            System.out.println("user not found !!!!");
+            return false;
         }
         else{
-            System.out.print("user is logged");
+            System.out.println("user is logged");
+            while(rs.next()){
+                LoginSession.UID=rs.getInt("id");
+                LoginSession.Role=rs.getString("role");
+                LoginSession.Username=rs.getString("username");
+                LoginSession.Email=rs.getString("email");
+                LoginSession.Password=rs.getString("password"); 
+                LoginSession.IsLogged=true;
+            }
+            System.out.println(LoginSession.Username+" is connected");
+            return true;
         }
-    } catch (SQLException ex) {
-        System.out.print(ex);
+        } catch (SQLException ex) {
+            //System.out.println(ex);
         }
+        return false;
+    }  
+    
+    public void logout(){
+        LoginSession.IsLogged=false;
     }
+    
 }
 
     
