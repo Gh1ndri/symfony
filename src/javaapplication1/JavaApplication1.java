@@ -31,7 +31,7 @@ public class JavaApplication1 {
 //        String operation=sc.nextLine();
 //        System.out.println(serviceUser.rechercherUser(operation).toString());
 
-            System.out.println(serviceUser.tri().toString());
+          System.out.println(serviceUser.triWithUsername().toString());
 
 //        while(true){
 //            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher l/login: ");
