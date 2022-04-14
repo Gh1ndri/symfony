@@ -14,6 +14,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.System.Logger;
+import static java.time.zone.ZoneRulesProvider.refresh;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -124,6 +128,7 @@ public class ServiceUser implements Service<User> {
     public boolean login(String email, String password){
         
         try {
+           
         String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
         Statement stm = cnx.createStatement();
         ResultSet rs= stm.executeQuery(querry);
@@ -155,6 +160,57 @@ public class ServiceUser implements Service<User> {
         LoginSession.IsLogged=false;
     }
     
+    public List<User> rechercherUser(String n){
+        refresh();
+        List<User> users = new ArrayList();
+        try {
+        String querry ="SELECT id,username,email,password,role FROM `User` where email like '%"+n+"%' or username like '%"+n+"%' or role like '%"+n+"%'";
+        Statement stm = cnx.createStatement();
+        ResultSet rs= stm.executeQuery(querry);
+        System.out.println(querry);
+        while (rs.next()){
+            User p = new User();
+            p.setId(rs.getInt(1));
+            p.setUsername(rs.getString(2));
+            p.setEmail(rs.getString(3));
+            p.setRole(rs.getString(4));
+            p.setPassword(rs.getString(5));
+            users.add(p);
+        }
+        
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        return users;
+    }
+    
+    public TreeSet<User> tri(){
+        List<User> users = new ArrayList();
+        
+        try {
+        String querry ="SELECT * FROM `User`";
+        Statement stm = cnx.createStatement();
+        
+            ResultSet rs= stm.executeQuery(querry);
+            
+        while (rs.next()){
+            User p = new User();
+            p.setId(rs.getInt(1));
+            p.setUsername(rs.getString(3));
+            p.setEmail(rs.getString(2));
+            p.setRole(rs.getString(4));
+            p.setPassword(rs.getString(5));
+            users.add(p);
+        }
+        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getUsername().compareTo(b.getUsername()))));
+        return userTri;
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        return null;
+    }
+    
+  
 }
 
     
