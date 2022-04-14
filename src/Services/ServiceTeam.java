@@ -54,6 +54,7 @@ public class ServiceTeam implements Service<Team>{
             p.setTeamName(rs.getString(2));
             p.setDescription(rs.getString(3)); 
             teams.add(p);
+//            System.out.println(LoginSession.Role);
         }
 
         return teams;
@@ -95,21 +96,21 @@ public class ServiceTeam implements Service<Team>{
         }
     }
 
-    @Override
-    public void TruncateTable() {
-        
-        try {
-        String querry= "TRUNCATE TABLE `Team`";
-        Statement stm = cnx.createStatement();
-    
-        stm.executeUpdate(querry);
-    
-        } catch (SQLException ex) {
-            System.out.println("service classe vider table methode  ");
-            System.out.println(ex.getMessage());
-
-        }
-    }
+//    @Override
+//    public void TruncateTable() {
+//        
+//        try {
+//        String querry= "TRUNCATE TABLE `Team`";
+//        Statement stm = cnx.createStatement();
+//    
+//        stm.executeUpdate(querry);
+//    
+//        } catch (SQLException ex) {
+//            System.out.println("service classe vider table methode  ");
+//            System.out.println(ex.getMessage());
+//
+//        }
+//    }
 
     
 

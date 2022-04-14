@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Services;
 
 import Model.User;
@@ -12,16 +8,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.prefs.Preferences;
 import utils.MyDB;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.System.Logger;
+import static java.time.zone.ZoneRulesProvider.refresh;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author leith
  */
 public class ServiceUser implements Service<User> {
-    
+   
     private Connection cnx = MyDB.getInstance().getCnx() ;
-
+    public static User user;
+    ServiceTeam serviceTeam =new ServiceTeam();
     @Override
     public void ajouter(User t) {
         
@@ -104,72 +110,74 @@ public class ServiceUser implements Service<User> {
         }
     }
 
-    @Override
-    public void TruncateTable() {
+
+    public boolean login(String email, String password){
         
         try {
-        String querry= "TRUNCATE TABLE `User`";
+           
+        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
         Statement stm = cnx.createStatement();
-    
-        stm.executeUpdate(querry);
-    
-        } catch (SQLException ex) {
-            System.out.println("service classe vider table methode  ");
-            System.out.println(ex.getMessage());
+        ResultSet rs= stm.executeQuery(querry);
 
+        if(!rs.isBeforeFirst()){
+            System.out.println("user not found !!!!");
+            return false;
         }
+        else{
+            System.out.println("user is logged");
+            while(rs.next()){
+                LoginSession.UID=rs.getInt("id");
+                LoginSession.Role=rs.getString("role");
+                LoginSession.Username=rs.getString("username");
+                LoginSession.Email=rs.getString("email");
+                LoginSession.Password=rs.getString("password"); 
+                LoginSession.IsLogged=true;
+            }
+            System.out.println(LoginSession.Username+" is connected");
+            return true;
+        }
+        } catch (SQLException ex) {
+            //System.out.println(ex);
+        }
+        return false;
+    }  
+    
+    public void logout(){
+        LoginSession.IsLogged=false;
     }
-//    public boolean login(String email, String password){
-//        
-//        List<User> users = new ArrayList();
-//        try {
-//        String querry ="SELECT * FROM `User` where email ='"+email+"' and password ='"+password+"'";
-//        Statement stm = cnx.createStatement();
-    //User u = n.....
-//        ResultSet rs= stm.executeQuery(querry);
-//    while (rs.next()){
-//       
-//        
-//        p.setId(rs.getInt(1));
-//        p.setUsername(rs.getString(1));
-//        p.setEmail(rs.getString(1));
-//        p.setRole(rs.getString(1));
-//        p.setPassword(rs.getString(1));
-//        System.out.print(p);
-//        }re
-//    
-//    } catch (SQLException ex) {
-//        System.out.print(ex);
-//        }
-//       return false;
-//    }
-//    
-//    public boolean Existmail(String s){
-//        List<User> users = new ArrayList();
-//        try {
-//       
-//        String querry ="SELECT email FROM `User` where email="+s;
-//        Statement stm = cnx.createStatement();
-//        ResultSet rs= stm.executeQuery(querry);
-//            
-//        while (rs.next()){
-//            User p = new User();
-//            
-//            p.setId(rs.getInt(1));
-//            p.setUsername(rs.getString(3));
-//            p.setEmail(rs.getString(2));
-//            p.setRole(rs.getString(4));
-//            p.setPassword(rs.getString(5));
-//            
-//            users.add(p);
-//        }
-//        } catch (SQLException ex) {
-//            System.out.print(ex);
-//        }
-//        if(rs.getColumnCount()){
-//            
-//        }
-//        return false;
-//    }
-//    
+    
+    public List<User> rechercherUser(String n){
+        
+        List<User> users = new ArrayList();
+        try {
+        String querry ="SELECT id,username,email,password,role FROM `User` where email like '%"+n+"%' or username like '%"+n+"%' or role like '%"+n+"%'";
+        Statement stm = cnx.createStatement();
+        ResultSet rs= stm.executeQuery(querry);
+        System.out.println(querry);
+        while (rs.next()){
+            User p = new User();
+            p.setId(rs.getInt(1));
+            p.setUsername(rs.getString(2));
+            p.setEmail(rs.getString(3));
+            p.setRole(rs.getString(4));
+            p.setPassword(rs.getString(5));
+            users.add(p);
+        }
+        
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        return users;
+    }
+    
+    public TreeSet<User> triWithUsername(){
+        List<User> users =afficher();
+        
+        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getUsername().compareTo(b.getUsername()))));
+        return userTri;
+    }
+    
 }
+
+    
+

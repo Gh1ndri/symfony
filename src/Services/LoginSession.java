@@ -5,17 +5,17 @@
  */
 package Services;
 
-import java.util.List;
-
 /**
  *
  * @author leith
  */
-public interface Service <T> {
+public class LoginSession {
+    public static int UID;
+    public static String Role;
+    public static String Username;
+    public static String Password;
+    public static String Email;
+    public static boolean IsLogged=false;
+
     
-    public void  ajouter(T t);
-    public List<T> afficher();
-    public void  modifier (String t,T a);
-    public void supprimer (String t);
-    //public void TruncateTable();
 }
