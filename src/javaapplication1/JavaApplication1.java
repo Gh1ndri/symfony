@@ -12,26 +12,27 @@ import Services.ServiceUser;
 import static java.lang.System.exit;
 import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.Scanner;
+import javafx.application.Application;
 
 /**
  *
  * @author leith
  */
-public class JavaApplication1 {
+public class JavaApplication1   {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        Scanner sc = new Scanner(System.in);
-        ServiceUser serviceUser = new ServiceUser();
-        ServiceTeam serviceTeam = new ServiceTeam();
+//    public static void main(String[] args) {
+//        
+//        Scanner sc = new Scanner(System.in);
+//        ServiceUser serviceUser = new ServiceUser();
+//        ServiceTeam serviceTeam = new ServiceTeam();
 //        System.out.print("saisir :");
 //        String operation=sc.nextLine();
 //        System.out.println(serviceUser.rechercherUser(operation).toString());
 
-          System.out.println(serviceUser.triWithUsername().toString());
+//          System.out.println(serviceUser.triWithUsername().toString());
 
 //        while(true){
 //            System.out.print("Veuillez saisir l'opération a/ajouter s/supprimer m/modifier A/afficher l/login: ");
@@ -121,5 +122,5 @@ public class JavaApplication1 {
 //            exit(-1);
 //            }
 //        }
-    }
+    //}
 }

@@ -15,30 +15,43 @@ public class User {
     private String username;
     private String role;
     private String password;
+    private String avatar;
 
-    public User(int id, String email, String username, String role, String password) {
+    
+
+    public User(int id, String email, String username, String role, String password, String img) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.role = role;
         this.password = password;
+        this.avatar=img;
     }
 
-    public User(String email, String username, String role, String password) {
+    public User(String email, String username, String role, String password ,String img) {
         this.email = email;
         this.username = username;
         this.role = role;
         this.password = password;
+        this.avatar=img;
     }
 
     public User() {
+    }
+
+    public User(String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
     public int getId() {
         return id;
     }
-
+    
+    public String getAvatar() {
+        return avatar;
+    }
+    
     public String getEmail() {
         return email;
     }
@@ -57,6 +70,10 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public void setEmail(String email) {

@@ -32,7 +32,7 @@ public class ServiceUser implements Service<User> {
     public void ajouter(User t) {
         
         try {
-        String querry= "INSERT INTO `User`(`email`, `username`, `role`, `password`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"')";
+        String querry= "INSERT INTO `User`(`email`, `username`, `role`, `password`,`avatar`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"','"+t.getAvatar()+"')";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -172,7 +172,6 @@ public class ServiceUser implements Service<User> {
     
     public TreeSet<User> triWithUsername(){
         List<User> users =afficher();
-        
         TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getUsername().compareTo(b.getUsername()))));
         return userTri;
     }
