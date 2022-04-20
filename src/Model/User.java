@@ -16,6 +16,7 @@ public class User {
     private String role;
     private String password;
     private String avatar;
+    private String isactive;
 
     
 
@@ -28,12 +29,13 @@ public class User {
         this.avatar=img;
     }
 
-    public User(String email, String username, String role, String password ,String img) {
+    public User(String email, String username, String role, String password ,String img,String isactive) {
         this.email = email;
         this.username = username;
         this.role = role;
         this.password = password;
         this.avatar=img;
+        this.isactive=isactive;
     }
 
     public User() {
@@ -43,7 +45,10 @@ public class User {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-
+    public String getIsactive() {
+        return isactive;
+    }
+    
     public int getId() {
         return id;
     }
@@ -70,6 +75,10 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setIsactive(String isactive) {
+        this.isactive = isactive;
     }
 
     public void setAvatar(String avatar) {

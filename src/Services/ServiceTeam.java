@@ -24,18 +24,23 @@ public class ServiceTeam implements Service<Team>{
     private Connection cnx = MyDB.getInstance().getCnx() ;
 
     @Override
-    public void ajouter(Team t) {
+    public boolean ajouter(Team t) {
         
         try {
         String querry= "INSERT INTO `Team`(`TeamName`, `Description`) VALUES ('"+t.getTeamName()+"','"+t.getDescription()+"')";
         Statement stm = cnx.createStatement();
     
-        stm.executeUpdate(querry);
-
+        int row= stm.executeUpdate(querry);
+        if(row>0){
+            return true;
+        }else{
+            return false;
+        }
         } catch (SQLException ex) {
             System.out.println("service classe ajouter methode  ");
             System.out.println(ex.getMessage());
         }
+        return false;
     }
 
     @Override
@@ -64,10 +69,10 @@ public class ServiceTeam implements Service<Team>{
     }
 
     @Override
-    public void modifier(String a,Team t) {
+    public void modifier(Team a,Team t) {
         
         try {
-        String querry= "UPDATE `Team` SET `TeamName`='"+t.getTeamName()+"',`Description`='"+t.getDescription()+"' WHERE TeamName='"+a+"'";
+        String querry= "UPDATE `Team` SET `TeamName`='"+t.getTeamName()+"',`Description`='"+t.getDescription()+"' WHERE TeamName='"+a.getTeamName()+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -83,10 +88,10 @@ public class ServiceTeam implements Service<Team>{
     }
 
     @Override
-    public void supprimer(String t) {
+    public void supprimer(Team t) {
         
         try {
-        String querry= "DELETE FROM `Team` WHERE TeamName ='"+t+"'";
+        String querry= "DELETE FROM `Team` WHERE TeamName ='"+t.getTeamName()+"'";
         Statement stm = cnx.createStatement();
         stm.executeUpdate(querry);
     

@@ -18,6 +18,8 @@ import java.lang.System.Logger;
 import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -29,25 +31,30 @@ public class ServiceUser implements Service<User> {
     public static User user;
     ServiceTeam serviceTeam =new ServiceTeam();
     @Override
-    public void ajouter(User t) {
+    public boolean ajouter(User t) {
         
         try {
-        String querry= "INSERT INTO `User`(`email`, `username`, `role`, `password`,`avatar`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"','"+t.getAvatar()+"')";
+        String querry= "INSERT INTO `User`(`email`, `username`, `role`, `password`,`avatar`,`isactive`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"','"+t.getAvatar()+"','"+t.getIsactive()+"')";
         Statement stm = cnx.createStatement();
     
-        stm.executeUpdate(querry);
+        int x = stm.executeUpdate(querry);
+        if(x==0){
+            return false;
+        }else{
+            return true;
+        }
     } catch (SQLException ex) {
         System.out.println("service classe ajouter methode  ");
         System.out.println(ex.getMessage());
     
     }
-        
+     return false;   
     }
 
     @Override
-    public List<User> afficher() {
-        
-        List<User> users = new ArrayList();
+    public ObservableList<User> afficher() {
+        ObservableList<User> users =FXCollections.observableArrayList();
+        //List<User> users = new ArrayList();
         try {
        
         String querry ="SELECT * FROM `User`";
@@ -63,7 +70,7 @@ public class ServiceUser implements Service<User> {
             p.setEmail(rs.getString(2));
             p.setRole(rs.getString(4));
             p.setPassword(rs.getString(5));
-            
+            p.setIsactive(rs.getString(7));
             users.add(p);
         }
         return users;
@@ -74,10 +81,10 @@ public class ServiceUser implements Service<User> {
     }
 
     @Override
-    public void modifier(String t2,User t) {
+    public void modifier(User t2,User t) {
        
         try {
-        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2+"'";
+        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2.getEmail()+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -93,10 +100,10 @@ public class ServiceUser implements Service<User> {
     }
 
     @Override
-    public void supprimer(String t) {
+    public void supprimer(User t) {
         
         try {
-        String querry= "DELETE FROM `User` WHERE email ='"+t+"'";
+        String querry= "UPDATE `User` SET `isactive` = 'deleted' where email='"+t.getEmail()+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -146,9 +153,10 @@ public class ServiceUser implements Service<User> {
         LoginSession.IsLogged=false;
     }
     
-    public List<User> rechercherUser(String n){
+    public ObservableList<User> rechercherUser(String n){
         
-        List<User> users = new ArrayList();
+        //List<User> users = new ArrayList();
+        ObservableList<User> users =FXCollections.observableArrayList();
         try {
         String querry ="SELECT id,username,email,password,role FROM `User` where email like '%"+n+"%' or username like '%"+n+"%' or role like '%"+n+"%'";
         Statement stm = cnx.createStatement();

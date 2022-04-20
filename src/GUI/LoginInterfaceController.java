@@ -1,6 +1,7 @@
 
 package GUI;
 
+import Services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -24,6 +26,10 @@ public class LoginInterfaceController  {
     private Parent root;
     @FXML
     private Hyperlink signuplink;
+    @FXML
+    private TextField logemail;
+    @FXML
+    private TextField logpassword;
     
     public void switchToSignUp(ActionEvent event) throws IOException{
         
@@ -33,6 +39,15 @@ public class LoginInterfaceController  {
         stage.setTitle("Sign Up");
         stage.setScene(scene);
         stage.show();
+                
+    }  
+    
+    public void switchToSignIn(ActionEvent event) throws IOException{
+        
+        String email=logemail.getText();
+        String password=logpassword.getText();
+        ServiceUser sp = new ServiceUser();
+        sp.login(email, password);
                 
     }  
 }

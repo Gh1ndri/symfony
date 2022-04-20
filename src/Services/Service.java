@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface Service <T> {
     
-    public void  ajouter(T t);
+    public boolean  ajouter(T t);
     public List<T> afficher();
-    public void  modifier (String t,T a);
-    public void supprimer (String t);
+    public void  modifier (T t,T a);
+    public void supprimer (T t);
     //public void TruncateTable();
 }
