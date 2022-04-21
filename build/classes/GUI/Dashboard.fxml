@@ -100,7 +100,7 @@
             <TableColumn fx:id="culumnIsActive" prefWidth="167.0" style="-fx-background-color: #D3DEDC #D3DEDC #D3DEDC #D3DEDC;" text="isActive" />
         </columns>
       </TableView>
-      <ImageView fitHeight="59.0" fitWidth="58.0" layoutX="367.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
+      <ImageView fitHeight="59.0" fitWidth="58.0" layoutX="373.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
          <image>
             <Image url="@../Images/icons8-settings-80.png" />
          </image>
