@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1101.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1101.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FrontController">
    <children>
       <Pane layoutX="14.0" layoutY="609.0" prefHeight="177.0" prefWidth="1073.0" style="-fx-background-color: #004445#004445; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
          <children>
@@ -66,7 +67,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="436.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-border-color: #ffffff; -fx-background-color: #6C3483#6C3483;" text="Team" textFill="WHITE">
+                        <Button fx:id="team" mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-border-color: #ffffff; -fx-background-color: #6C3483#6C3483;" text="Team" textFill="WHITE">
                            <HBox.margin>
                               <Insets top="26.0" />
                            </HBox.margin>
@@ -120,7 +121,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="51.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="signout" fitHeight="51.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="40.0" top="26.0" />
                      </HBox.margin>
@@ -128,7 +129,7 @@
                         <Image url="@../Images/icons8-sign-out-64.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="51.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profil" fitHeight="51.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="20.0" top="26.0" />
                      </HBox.margin>
@@ -140,6 +141,6 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="161.0" prefHeight="438.0" prefWidth="1073.0" style="-fx-background-color: #D5DBDB#D5DBDB; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" />
+      <VBox fx:id="vboxTeam" layoutX="14.0" layoutY="162.0" prefHeight="438.0" prefWidth="1073.0" />
    </children>
 </AnchorPane>

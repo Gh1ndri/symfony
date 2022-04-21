@@ -8,6 +8,7 @@ package GUI;
 import Model.User;
 import Services.ServiceUser;
 import java.awt.print.Book;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import static java.time.zone.ZoneRulesProvider.refresh;
@@ -20,8 +21,13 @@ import java.util.stream.Stream;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -34,6 +40,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -46,37 +53,25 @@ public class DashboardController implements Initializable {
     private Button user;
     @FXML
     private Button team;
-    @FXML
     private TextField search;
     @FXML
     private ImageView pdf;
-    @FXML
     private ImageView delete;
-    @FXML
-    private ImageView update;
     @FXML
     private ImageView refresh;
     @FXML
     private ImageView front;
-    @FXML
     private ChoiceBox<String> choiceBox;
     @FXML
     private Label time;
-    @FXML
     private TableColumn<User, String> culumnEmail;
 
-    @FXML
     private TableColumn<User, String> culumnIsActive;
 
-    @FXML
     private TableColumn<User, String> culumnRole;
 
-    @FXML
-    private TableColumn<User, String> culumnTeam;
 
-    @FXML
     private TableColumn<User, String> culumnUsername;
-    @FXML
     private TableView<User> usersTable;
     
     ObservableList<User> listM;
@@ -89,6 +84,11 @@ public class DashboardController implements Initializable {
     
     private volatile boolean stop=false;
     ServiceUser serviceUser =new ServiceUser();
+    
+    
+//    private Stage stage; 
+//    private Scene scene;
+//    private Parent root;
     /**
      * Initializes the controller class.
      */
@@ -109,6 +109,7 @@ public class DashboardController implements Initializable {
         choiceBox.getItems().add("Isactive");
     }    
  
+    @FXML
     public void supp(){
         delete.setOnMouseClicked(e->{
             Alert alert= new Alert(AlertType.CONFIRMATION);
@@ -175,6 +176,7 @@ public class DashboardController implements Initializable {
         thread.start();
     }
     
+    @FXML
     public void search(){
         User user= new User();
         serviceUser.supprimer(user);
@@ -186,6 +188,17 @@ public class DashboardController implements Initializable {
         culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
         usersTable.setItems(listM);
     }
+    
+//    public void switchToTeam(ActionEvent event) throws IOException{
+//        
+//        root = FXMLLoader.load(getClass().getResource("TeamDashboard.fxml"));
+//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setTitle("Team");
+//        stage.setScene(scene);
+//        stage.show();
+//                
+//    }  
     
 
     
