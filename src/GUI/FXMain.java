@@ -5,7 +5,12 @@
  */
 package GUI;
 
+import Services.JavaMail;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,11 +30,12 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource("LoginInterface.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("GEEK");
             primaryStage.show();
+            
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -38,7 +44,8 @@ public class FXMain extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        
         launch(args);
     }
     

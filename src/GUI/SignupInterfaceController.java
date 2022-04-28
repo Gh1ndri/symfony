@@ -7,6 +7,7 @@ package GUI;
 
 import static GUI.ImagePopupController.imgurl;
 import Model.User;
+import Services.JavaMail;
 import Services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +46,9 @@ public class SignupInterfaceController implements Initializable{
     private TextField password;
     @FXML
     private TextField confirmpassword;
-    
+    private Stage stage; 
+    private Scene scene;
+    private Parent root;
     /**
      * Initializes the controller class.
      */
@@ -66,14 +69,20 @@ public class SignupInterfaceController implements Initializable{
     }  
     
     @FXML
-    private void ajouterUser(ActionEvent event) throws IOException {
-        String email2=email.getText();
+    private void ajouterUser(ActionEvent event) throws Exception{
         ServiceUser sp = new ServiceUser();
         User s = new User(email.getText(),username.getText(),"Role_USER",password.getText(),imgurl,"Active");
-        if(sp.ajouter(s)==true){
+        if((sp.ajouter(s)==true) && (email.getText()!="")&&(username.getText()!="")&&(password.getText()!="")){
+            JavaMail.send(
+    "leithhamza.ghandri@esprit.tn",
+    "211JMT2082",
+    email.getText(),
+    "Bienvenu sur GEEK",
+    "your account is verified "
+  );
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Test");
-            alert.setHeaderText("This is a test.");
+            alert.setHeaderText("You are succefully sing up.");
             alert.setResizable(false);
             alert.setContentText("Select okay or cancel this alert.");
             alert.showAndWait();
@@ -86,22 +95,12 @@ public class SignupInterfaceController implements Initializable{
                 stage.setTitle("Login");
                 stage.setScene(new Scene(root1));
                 stage.show();
-            }
-//            else if(result.get() == ButtonType.OK){
-//                FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("LoginInterface.fxml"));
-//                Parent root1= (Parent) fxmlloader.load();
-//                Stage stage = new Stage();
-//                stage.initStyle(StageStyle.DECORATED);
-//                stage.setTitle("Login");
-//                stage.setScene(new Scene(root1));
-//                stage.show();
-//            }
-                
+            }   
         }else{
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Account Doesn't Created");
             alert.setHeaderText("Look, an Information Dialog");
-            alert.setContentText("I have a great message for you!");
+            alert.setContentText("make sur for information");
             alert.show();
         }
     }
@@ -110,12 +109,22 @@ public class SignupInterfaceController implements Initializable{
     private void Login(ActionEvent event) {
         String email2=email.getText();
         ServiceUser sp = new ServiceUser();
-        System.out.print("dfgsdfg"+email2);
         User s = new User(email2,username.getText(),"Role_USER",password.getText(),imgurl,"Role_USE");
         sp.ajouter(s);
         System.out.print("dfgsdfg"+email.getText());
         
     }
+    
+    public void switchToLogin(ActionEvent event) throws IOException{
+        
+        root = FXMLLoader.load(getClass().getResource("LoginInterface.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Sign Up");
+        stage.setScene(scene);
+        stage.show();
+                
+    }  
       
     
 }

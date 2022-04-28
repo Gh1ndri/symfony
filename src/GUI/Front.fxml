@@ -121,17 +121,25 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="signout" fitHeight="51.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="dash" mnemonicParsing="false" onAction="#switchToDash" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                      <HBox.margin>
-                        <Insets left="40.0" top="26.0" />
+                        <Insets left="5.0" top="26.0" />
                      </HBox.margin>
-                     <image>
-                        <Image url="@../Images/icons8-sign-out-64.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="profil" fitHeight="51.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                  </Button>
+                  <Button fx:id="signout" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="logout" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                      <HBox.margin>
-                        <Insets left="20.0" top="26.0" />
+                        <Insets left="5.0" top="26.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="profil" fitHeight="51.0" fitWidth="95.0" onMouseClicked="#switchProfilePopup" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="50.0" top="26.0" />
                      </HBox.margin>
                      <image>
                         <Image url="@../Images/icons8-administrator-male-100.png" />

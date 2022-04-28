@@ -10,20 +10,25 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SignupInterfaceController">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #6C3483#6C3483;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #5e2c8a#5e2c8a #5e2c8a#5e2c8a;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="304.0" fitWidth="350.0" layoutX="30.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="gotoLogin" layoutX="135.0" layoutY="397.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #5e2c8a#5e2c8a #5e2c8a#5e2c8a; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0); -fx-border-color: #ffffff;" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="128.0" layoutY="397.0" mnemonicParsing="false" onAction="#ajouterUser" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #6C3483#6C3483; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Sing Up" textFill="WHITE">
+            <Button layoutX="128.0" layoutY="397.0" mnemonicParsing="false" onAction="#ajouterUser" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #5e2c8a#5e2c8a #5e2c8a#5e2c8a; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Sing Up" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -57,7 +62,7 @@
                   <Image url="@../Images/icons8-avatar-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="122.0" fitWidth="150.0" layoutX="102.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="122.0" fitWidth="150.0" layoutX="102.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
                <image>
                   <Image url="@../Images/icons8-add-user-male-100.png" />
                </image>

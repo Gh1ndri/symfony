@@ -18,6 +18,13 @@ public class User {
     private String avatar;
     private String isactive;
 
+    public User(String email, String username, String role, String password) {
+        this.email = email;
+        this.username = username;
+        this.role = role;
+        this.password = password;
+    }
+
     
 
     public User(int id, String email, String username, String role, String password, String img) {

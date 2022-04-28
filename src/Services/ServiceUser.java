@@ -27,7 +27,7 @@ import javafx.collections.ObservableList;
  */
 public class ServiceUser implements Service<User> {
    
-    private Connection cnx = MyDB.getInstance().getCnx() ;
+    private Connection cnx = MyDB.getInstance().getCnx();
     public static User user;
     ServiceTeam serviceTeam =new ServiceTeam();
     @Override
@@ -81,10 +81,10 @@ public class ServiceUser implements Service<User> {
     }
 
     @Override
-    public void modifier(User t2,User t) {
+    public void modifier(String t2,User t) {
        
         try {
-        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2.getEmail()+"'";
+        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -138,6 +138,7 @@ public class ServiceUser implements Service<User> {
                 LoginSession.Username=rs.getString("username");
                 LoginSession.Email=rs.getString("email");
                 LoginSession.Password=rs.getString("password"); 
+                LoginSession.avatar=rs.getString("avatar");
                 LoginSession.IsLogged=true;
             }
             System.out.println(LoginSession.Username+" is connected");
@@ -178,11 +179,31 @@ public class ServiceUser implements Service<User> {
         return users;
     }
     
-    public TreeSet<User> triWithUsername(){
-        List<User> users =afficher();
-        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getUsername().compareTo(b.getUsername()))));
-        return userTri;
+    public ObservableList<User> triWithUsername(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getUsername().compareTo(o2.getUsername()))
+        .collect(Collectors.toList()));
+        return users;
     }
+    
+    public ObservableList<User> triWithEmail(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getEmail().compareTo(o2.getEmail()))
+        .collect(Collectors.toList()));
+        return users;
+    }
+    
+    public ObservableList<User> triWithIsActive(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getIsactive().compareTo(o2.getIsactive()))
+        .collect(Collectors.toList()));
+        return users;
+    }
+    
+    
     
 }
 

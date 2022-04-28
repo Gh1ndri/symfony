@@ -13,6 +13,7 @@ public class Team {
     private int id;
     private String TeamName;
     private String Description;
+    private String isactive;
 
     public Team(int id, String TeamName, String Description) {
         this.id = id;
@@ -20,14 +21,24 @@ public class Team {
         this.Description = Description;
     }
 
-    public Team(String TeamName, String Description) {
+    public Team(String TeamName, String Description,String isactive) {
         this.TeamName = TeamName;
         this.Description = Description;
+        this.isactive= isactive;
     }
 
     public Team() {
     }
 
+    public String getIsactive() {
+        return isactive;
+    }
+
+    public void setIsactive(String isactive) {
+        this.isactive = isactive;
+    }
+
+    
     public int getId() {
         return id;
     }

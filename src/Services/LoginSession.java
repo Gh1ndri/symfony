@@ -16,7 +16,7 @@ public class LoginSession {
     public static String Password;
     public static String Email;
     public static String url;
+    public static String avatar;
     public static boolean IsLogged=false;
 
-    
 }
