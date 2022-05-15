@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,12 +45,22 @@ public class LoginInterfaceController implements Initializable {
     @FXML
     private TextField logemail;
     @FXML
-    private TextField logpassword;
-    
+    private PasswordField logpassword;
     @FXML
     private TextField tcaptcha;
     @FXML
     private ImageView icaptcha;
+    @FXML
+    private ImageView show;
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        BufferedImage i = captcha.getImage();
+        Image ii = SwingFXUtils.toFXImage(i, null);
+        ImageView ll = new ImageView(ii);
+        icaptcha.setImage(ii);
+    }
     
     @FXML
     public void switchToSignUp(ActionEvent event) throws IOException{
@@ -77,11 +88,11 @@ public class LoginInterfaceController implements Initializable {
             stage.show();
         }else{
             try{
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/LoginInterface.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/LoginInterface.fxml"));
                  Parent root = loader.load();
                  LoginInterfaceController mdc = loader.getController();
                  mdc.test(logemail.getText(),logpassword.getText());
-                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                  Scene scene = new Scene(root);
                  stage.setScene(scene);
                  stage.show();
@@ -89,18 +100,9 @@ public class LoginInterfaceController implements Initializable {
             System.out.println(ex);
         
         }
-        }
-          
-        
+        }   
     }  
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        BufferedImage i = captcha.getImage();
-        Image ii = SwingFXUtils.toFXImage(i, null);
-        ImageView ll = new ImageView(ii);
-        icaptcha.setImage(ii);
-    }
 
     @FXML
     private void refCaptcha(MouseEvent event) {
@@ -115,14 +117,12 @@ public class LoginInterfaceController implements Initializable {
                  stage.show();
         }catch(IOException ex){
             System.out.println(ex);
-        
         }
-
     }
     
     public void test(String mail,String pass){
         logemail.setText(mail);
         logpassword.setText(pass);
     }
- 
+   
 }

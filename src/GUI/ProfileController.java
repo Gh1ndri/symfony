@@ -58,8 +58,6 @@ ServiceUser serviceUser =new ServiceUser();
                Image image = new Image(localUrl);
                imgprof.setImage(image);
                
-               
-           
            } catch (MalformedURLException ex) {
                System.out.println(ex);;
            }

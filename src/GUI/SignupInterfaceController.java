@@ -12,6 +12,7 @@ import Services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,18 +72,19 @@ public class SignupInterfaceController implements Initializable{
     @FXML
     private void ajouterUser(ActionEvent event) throws Exception{
         ServiceUser sp = new ServiceUser();
+        Random rand = new Random();
         User s = new User(email.getText(),username.getText(),"Role_USER",password.getText(),imgurl,"Active");
         if((sp.ajouter(s)==true) && (email.getText()!="")&&(username.getText()!="")&&(password.getText()!="")){
+            int n = rand.nextInt(50);
             JavaMail.send(
-    "leithhamza.ghandri@esprit.tn",
-    "211JMT2082",
-    email.getText(),
-    "Bienvenu sur GEEK",
-    "your account is verified "
-  );
+            "leithhamza.ghandri@esprit.tn",
+            "211JMT2082",
+            email.getText(),
+            "Bienvenu sur GEEK",
+            "Some text <b>bold part</b> ... continue");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Test");
-            alert.setHeaderText("You are succefully sing up.");
+            alert.setHeaderText("You are succefully sing up.Please verify you email");
             alert.setResizable(false);
             alert.setContentText("Select okay or cancel this alert.");
             alert.showAndWait();

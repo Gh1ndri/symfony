@@ -61,20 +61,14 @@ public class TeamDashboardController implements Initializable {
     @FXML
     private ImageView pdf;
     @FXML
-    private ImageView deleteteam;
-    @FXML
     private ImageView ref;
     @FXML
     private ChoiceBox<String> choiceBoxteam;
-    @FXML
     private TableView<Team> teamsTable;
     @FXML
     private ListView<String> listv;
-    @FXML
     private TableColumn<Team, String> culumnTeam;
-    @FXML
     private TableColumn<Team, String> Description;
-    @FXML
     private TableColumn<Team, String> culumnIsActiveteam;
     @FXML
     private Label timeteam;
@@ -98,16 +92,16 @@ public class TeamDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         time();
         
-//        listM=serviceTeam.afficher();
-//        culumnTeam.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
-//        Description.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
-//        culumnIsActiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
-//        teamsTable.setItems(listM);
-//            
-//
-//        choiceBoxteam.getItems().add("Teamname");
-//        choiceBoxteam.getItems().add("Description");
-//        choiceBoxteam.getItems().add("isActive");
+        listM=serviceTeam.afficher();
+        culumnTeam.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
+        Description.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
+        culumnIsActiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
+        teamsTable.setItems(listM);
+            
+
+        choiceBoxteam.getItems().add("Teamname");
+        choiceBoxteam.getItems().add("Description");
+        choiceBoxteam.getItems().add("isActive");
     }    
 
 //    @FXML
@@ -162,6 +156,7 @@ public class TeamDashboardController implements Initializable {
         thread.start();
     }
     
+    @FXML
     public void switchToUser(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -172,6 +167,7 @@ public class TeamDashboardController implements Initializable {
     }  
     
     
+    @FXML
     public void switchTeamPopup() throws IOException{
         
         FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("AddTeam.fxml"));
@@ -190,6 +186,7 @@ public class TeamDashboardController implements Initializable {
 //        teamsTable.setItems(listM);
 //    }
     
+    @FXML
     public void switchToFront2(ActionEvent event) throws IOException{
         
         root = FXMLLoader.load(getClass().getResource("Front.fxml"));
@@ -201,6 +198,7 @@ public class TeamDashboardController implements Initializable {
                
     } 
     
+    @FXML
     public void switchEditTeamPopup() throws IOException{
         
         FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("PopupEditTeam.fxml"));
@@ -211,6 +209,7 @@ public class TeamDashboardController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     } 
+    @FXML
         public void affiche(){
         
         System.out.println(serviceTeam.afficher());
@@ -226,4 +225,8 @@ public class TeamDashboardController implements Initializable {
 //        int selecteId =list.getSelectionModel().getSelectedIndex();
 //        list.getItems().remove(selecteId);
 //    }
+
+    @FXML
+    private void switchToUser(MouseEvent event) {
+    }
 }

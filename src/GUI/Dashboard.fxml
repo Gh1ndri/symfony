@@ -73,7 +73,7 @@
                   <Image url="@../Images/icons8-delete-trash-100.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="refresh" fitHeight="69.0" fitWidth="84.0" layoutX="221.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
+            <ImageView fx:id="refresh" fitHeight="69.0" fitWidth="84.0" layoutX="221.0" layoutY="14.0" onMouseClicked="#affiche" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
                <image>
                   <Image url="@../Images/icons8-refresh-64.png" />
                </image>
@@ -114,10 +114,10 @@
             </ImageView>
          </children>
       </Pane>
-      <Button fx:id="frontteam" layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToFront" prefHeight="58.0" prefWidth="89.0" style="-fx-background-color: #D3DEDC #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Front">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
+      <ImageView fx:id="frontgo" fitHeight="69.0" fitWidth="77.0" layoutX="270.0" layoutY="6.0" onMouseClicked="#switchToFront" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/icons8-return-80.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

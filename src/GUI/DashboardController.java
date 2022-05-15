@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javafx.application.Platform;
@@ -95,7 +97,7 @@ public class DashboardController implements Initializable {
     @FXML
     private TableColumn<?, ?> culumnTeam;
     @FXML
-    private Button frontteam;
+    private ImageView frontgo;
     /**
      * Initializes the controller class.
      */
@@ -128,8 +130,8 @@ public class DashboardController implements Initializable {
                 culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
                 culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
                 usersTable.setItems(listM);
-            }else if(newItem == ""){
-                listM=serviceUser.triWithEmail();
+            }else if(newItem == "Isactive"){
+                listM=serviceUser.triWithIsActive();
                 culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
                 culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
                 culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
@@ -138,10 +140,10 @@ public class DashboardController implements Initializable {
             }
         });
     }    
- 
+
     @FXML
-    public void supp(){
-        delete.setOnMouseClicked(e->{
+    public void supp(MouseEvent event){
+        
             Alert alert= new Alert(AlertType.CONFIRMATION);
             alert.setTitle("confirmation Dialog");
             alert.setHeaderText(null);
@@ -158,35 +160,21 @@ public class DashboardController implements Initializable {
                     culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
                     culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
                     usersTable.setItems(listM);
-            }
-            
-        });   
+            }   
     }
-//    public void affiche(){
-//        
-//        int first;
-//        int second;
-//        int third;
-//        int four;
-//        System.out.println(serviceUser.afficher());
-//        list1=serviceUser.afficher().stream().
-//                map(e->e.toString().substring(e.toString().indexOf("email")+6,e.toString().indexOf("username")-2)+
-//                        "                                                                 "+
-//                        e.toString().substring(e.toString().indexOf("username")+9,e.toString().indexOf("role")-1)+
-//                        "                                                                  "+
-//                        e.toString().substring(e.toString().indexOf("role")+5,e.toString().indexOf("password")-1)
-//                    ).collect(Collectors.toList());            
-//        list.getItems().addAll(list1);
-//    }
-    
-//    public void removeItem(){
-//        serviceUser.supprimer();
-//        String selectedemail =list.getSelectionModel().toString().substring(0,indexOf(","));
-//        int selecteId =list.getSelectionModel().getSelectedIndex();
-//        list.getItems().remove(selecteId);
-//    }
-    
-    
+    @FXML
+    public void affiche(){
+        refresh.setOnMouseClicked(e->{
+            listM.removeAll(listM);
+                listM=serviceUser.afficher();
+                culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+                culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+                culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+                culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
+                usersTable.setItems(listM);
+        });
+    }
+
     private void time(){
         Thread thread =new Thread(()->{
             SimpleDateFormat d= new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
@@ -208,7 +196,6 @@ public class DashboardController implements Initializable {
     @FXML
     public void search(){
         User user= new User();
-        //serviceUser.supprimer(user);
         listM.removeAll(listM);
         listM=serviceUser.rechercherUser(search.getText());
         culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
@@ -221,12 +208,6 @@ public class DashboardController implements Initializable {
     @FXML
     public void switchToTeam(ActionEvent event) throws IOException{
         
-        /*root = FXMLLoader.load(getClass().getResource("TeamDashboard.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Team");
-        stage.setScene(scene);
-        stage.show();*/
         root = FXMLLoader.load(getClass().getResource("TeamDashboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -237,30 +218,20 @@ public class DashboardController implements Initializable {
     }  
     @FXML
     public void tree(MouseEvent event){
-//        System.out.print(choiceBox.getValue());
-//        if(choiceBox.getValue().equals("Username")){
-//            listM=(ObservableList<User>) serviceUser.triWithUsername();
-//            
-//            System.out.print(listM);
-//            
-//            culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
-//        culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
-//        culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
-//        culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
-//        usersTable.setItems(listM);
-//        } 
-    }
-    @FXML
-    public void switchToFront(ActionEvent event) throws IOException{
-        
-        root = FXMLLoader.load(getClass().getResource("Front.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Team");
-        stage.setScene(scene);
-        stage.show();
-                
-    }  
 
-    
+    }
+     
+     @FXML
+    public void switchToFront(MouseEvent event){
+              try {
+                  root = FXMLLoader.load(getClass().getResource("Front.fxml"));
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setTitle("Team");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception ex) {
+                  System.out.print(ex);
+              }                
+    } 
 }

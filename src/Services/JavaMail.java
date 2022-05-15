@@ -23,39 +23,6 @@ import javax.mail.*;
  */
 public class JavaMail {
     
-//    public static void sendMail(String email) throws Exception{
-//        Properties p= new Properties();
-//        p.put("mail.smtp.auth", "true");
-//        p.put("mail.smtp.starttls.enable", "true");
-//        p.put("mail.smtp.host", "smtp.gmail.com");
-//        p.put("mail.smtp.port", "547");
-//        
-//        String accountEmail ="leithhamza.ghandri@esprit.tn";
-//        String passwd ="211JMT2082";
-//        Session session = Session.getInstance(p, new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication(){
-//                return new PasswordAuthentication(accountEmail,passwd);
-//            }
-//        });
-//        Message message = prepareMessage(session,accountEmail,email); 
-//        Transport.send(message);
-//    }
-//    
-//    private static Message prepareMessage(Session session, String myAccount, String recepient){
-//        try{
-//            Message message =new MimeMessage(session);
-//            message.setFrom(new InternetAddress(myAccount));
-//            message.setRecipient(Message.RecipientType.TO,new InternetAddress(recepient));
-//            message.setSubject("test");
-//            message.setText("hello");
-//        return message;
-//        }catch(Exception ex){
-//            System.out.print(ex);
-//        }                                
-//        return null;
-//    } 
-    
     public static void send(String from,String pwd,String to,String sub,String msg){
     //Propriétés
     Properties p = new Properties();
