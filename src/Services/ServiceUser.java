@@ -116,6 +116,23 @@ public class ServiceUser implements Service<User> {
 
         }
     }
+    
+    public void joinTeam(int a,int b) {
+        
+        try {
+        String querry= "UPDATE `user` SET `team_id`="+a+" WHERE id='"+b+"'";
+        Statement stm = cnx.createStatement();
+    
+        stm.executeUpdate(querry);
+        if(stm.executeUpdate(querry)==1){
+            System.out.print("user rejoint team");
+        }
+        } catch (SQLException ex) {
+            System.out.println("service classe supprimer methode  ");
+            System.out.println(ex.getMessage());
+
+        }
+    }
 
 
     public boolean login(String email, String password){

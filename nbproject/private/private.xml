@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/LoginInterface.fxml</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/Profile.fxml</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/FrontController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/Model/User.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/SignupInterfaceController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/FXMain.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/Dashboard.fxml</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/LoginInterfaceController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/TeamDashboardController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/Services/JavaMail.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/DashboardController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/PopupEditTeamController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/GUI/ProfileController.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/Services/Service.java</file>
+            <file>file:/Users/leith/personal/SandBox/JavaApplication1/src/Services/ServiceUser.java</file>
+        </group>
     </open-files>
 </project-private>

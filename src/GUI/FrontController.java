@@ -9,7 +9,9 @@ import Model.Team;
 import Services.LoginSession;
 import Services.ServiceTeam;
 import Services.ServiceUser;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -48,7 +51,7 @@ public class FrontController implements Initializable {
     private Button dash;
     public List<Team> list;
     
-     private Stage stage; 
+    private Stage stage; 
     private Scene scene;
     private Parent root;
     /**
@@ -63,6 +66,14 @@ public class FrontController implements Initializable {
             dash.setDisable(true);
             dash.setVisible(false);
         }
+        File file = new File("/Users/leith/personal/SandBox/JavaApplication1/src/Images/"+LoginSession.avatar);
+           try {
+               String localUrl = file.toURI().toURL().toString();
+               Image image = new Image(localUrl);
+               profil.setImage(image);
+           } catch (MalformedURLException ex) {
+               System.out.println(ex);;
+           }
     }    
     public void teamItems(){
         list=serviceTeam.afficher();

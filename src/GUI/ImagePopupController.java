@@ -10,8 +10,10 @@ import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.effect.ColorInput;
@@ -19,6 +21,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -54,29 +57,53 @@ public class ImagePopupController implements Initializable {
     private ImageView logo8;
     
     
-    public void selectImage1(){
+    public void selectImage1(Event e){
         imgurl="logo-1-1.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage2(){
+    public void selectImage2(Event e){
         imgurl="logo-1-2.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage3(){
+    public void selectImage3(Event e){
         imgurl="logo-1-3.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage4(){
+    public void selectImage4(Event e){
         imgurl="logo-1-4.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage5(){
+    public void selectImage5(Event e){
         imgurl="logo-1-5.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage6(){
+    public void selectImage6(Event e){
         imgurl="logo-1-6.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage7(){
+    public void selectImage7(Event e){
         imgurl="logo-1-7.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    public void selectImage8(){
+    public void selectImage8(Event e){
         imgurl="logo-1-8.png";
+        final Node source = (Node) e.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
     
     public void Enterimage1(){
