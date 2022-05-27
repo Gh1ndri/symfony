@@ -62,10 +62,10 @@ public class FrontController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(LoginSession.Role.equals("Role_USER")){
-            dash.setDisable(true);
-            dash.setVisible(false);
-        }
+//        if(LoginSession.Role.equals("Role_USER")){
+//            dash.setDisable(true);
+//            dash.setVisible(false);
+//        }
         File file = new File("/Users/leith/personal/SandBox/JavaApplication1/src/Images/"+LoginSession.avatar);
            try {
                String localUrl = file.toURI().toURL().toString();
